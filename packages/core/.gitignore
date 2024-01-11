@@ -11,11 +11,8 @@ node_modules
 docs/build
 .npmrc
 *.iml
-/lib
 .nyc_output
 coverage
 .vscode
-/types
 /docs
-/lib6
 *.code-workspace
