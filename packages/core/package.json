@@ -2,7 +2,8 @@
   "name": "neo4j-driver-core",
   "version": "5.0.0-dev",
   "description": "Internals of neo4j-driver",
-  "main": "lib/index.js",
+  "type": "module",
+  "module": "lib/index.js",
   "types": "types/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
@@ -43,6 +44,6 @@
     "source-map": "0.7.4",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
+    "typescript": "^5.3.3"
   }
 }

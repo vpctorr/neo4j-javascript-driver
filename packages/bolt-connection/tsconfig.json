@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "lib": ["ES6"],
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "ES2022",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "strictNullChecks": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "downlevelIteration": true,
     "outDir": "lib",
     "allowJs": true,
-    "isolatedModules": true
+    "isolatedModules": true,
   },
   "include": ["src/**/*.js", "types/**/*.ts"]
 }

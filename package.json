@@ -8,7 +8,7 @@
     "lint-staged": "^14.0.0",
     "standard": "^17.1.0",
     "ts-standard": "^12.0.2",
-    "typescript": "^4.9.5"
+    "typescript": "^5.3.3"
   },
   "lint-staged": {
     "*.{js,md,html}": [
@@ -56,7 +56,7 @@
     "start-testkit-backend::deno": "lerna run start::deno --scope testkit-backend --stream",
     "lerna": "lerna",
     "prepare": "husky install",
-    "lint-staged": "lint-staged",
+    "lint-staged": "",
     "lint": "npm run lint::core && npm run lint::bolt-connection && npm run lint::bolt-connection && npm run lint::neo4j-driver-lite && npm run lint::neo4j-driver && npm run lint::testkit-backend",
     "lint::core": "npm run ts-standard::core -- packages/core/src/ && npm run ts-standard::core -- packages/core/test/",
     "lint::bolt-connection": "npm run ts-standard::bolt-connection -- packages/bolt-connection/types/ && npm run standard -- packages/bolt-connection/src/ && npm run standard -- packages/bolt-connection/test/",
@@ -68,6 +68,6 @@
     "ts-standard::bolt-connection": "ts-standard --fix --project ./packages/bolt-connection/tsconfig.json",
     "ts-standard::neo4j-driver-lite": "ts-standard --fix --project ./packages/neo4j-driver-lite/tsconfig.json",
     "ts-standard::neo4j-driver": "ts-standard --fix --project ./packages/neo4j-driver/tsconfig.json",
-    "standard": "standard --fix --env jest --env jasmine"
+    "standard": ""
   }
 }

@@ -15,30 +15,29 @@
  * limitations under the License.
  */
 
-const buffer = require('vinyl-buffer')
-const gulp = require('gulp')
-const uglify = require('gulp-uglify')
-const jasmine = require('gulp-jasmine')
-const watch = require('gulp-watch')
-const batch = require('gulp-batch')
-const replace = require('gulp-replace')
-const fs = require('fs-extra')
-const path = require('path')
-const minimist = require('minimist')
-const install = require('gulp-install')
-const file = require('gulp-file')
-const rollup = require('rollup')
-const rollupCommonJs = require('@rollup/plugin-commonjs')
-const rollupNodeResolve = require('@rollup/plugin-node-resolve').default
-const rollupPolyfillNode = require('rollup-plugin-polyfill-node')
-const semver = require('semver')
-const sharedNeo4j = require('./test/internal/shared-neo4j').default
-const stream = require('stream')
-const ts = require('gulp-typescript')
-const JasmineReporter = require('jasmine-spec-reporter').SpecReporter
-const karma = require('karma')
-const log = require('fancy-log')
-const JasmineExec = require('jasmine')
+import buffer from 'vinyl-buffer'
+import gulp from 'gulp'
+import uglify from 'gulp-uglify'
+import jasmine from 'gulp-jasmine'
+import watch from 'gulp-watch'
+import batch from 'gulp-batch'
+import replace from 'gulp-replace'
+import fs from 'fs-extra'
+import path from 'path'
+import minimist from 'minimist'
+import install from 'gulp-install'
+import file from 'gulp-file'
+import * as rollup from 'rollup'
+import rollupCommonJs from '@rollup/plugin-commonjs'
+import rollupNodeResolve from '@rollup/plugin-node-resolve'
+import rollupPolyfillNode from 'rollup-plugin-polyfill-node'
+import semver from 'semver'
+import stream from 'stream'
+import ts from 'gulp-typescript'
+import JasmineReporter from 'jasmine-spec-reporter'
+import karma from 'karma'
+import log from 'fancy-log'
+import JasmineExec from 'jasmine'
 
 /**
  * Useful to investigate resource leaks in tests. Enable to see active sockets and file handles after the 'test' task.
@@ -51,13 +50,14 @@ gulp.task('nodejs', function () {
   return gulp
     .src('src/**/*.js')
     .pipe(ts({
-      target: 'ES5',
-      lib: ['ES6'],
+      target: 'ES2022',
+      lib: ['ES2022'],
+      module: 'ES2022',
       noImplicitAny: true,
       noImplicitReturns: true,
       strictNullChecks: true,
       esModuleInterop: true,
-      moduleResolution: 'node',
+      moduleResolution: 'Bundler',
       downlevelIteration: true,
       allowJs: true,
       isolatedModules: true
@@ -212,7 +212,6 @@ gulp.task('run-stress-tests', function () {
 
 gulp.task('run-stress-tests-without-jasmine', async function () {
   await sharedNeo4j.start()
-  const stresstest = require('./test/stress-test')
   return stresstest()
 })
 
@@ -258,7 +257,7 @@ function logActiveNodeHandles () {
 }
 
 function newJasmineConsoleReporter () {
-  return new JasmineReporter({
+  return new JasmineReporter.SpecReporter({
     colors: {
       enabled: true
     },

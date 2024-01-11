@@ -26,7 +26,8 @@
     "prepare": "npm run build",
     "clean": "rm -fr node_modules lib build"
   },
-  "main": "lib/index.js",
+  "type": "module",
+  "module": "lib/index.js",
   "browser": {
     "./lib/internal/node/index.js": "./lib/internal/browser/index.js"
   },
@@ -75,7 +76,7 @@
     "source-map": "0.7.4",
     "testcontainers": "^8.16.0",
     "tmp": "0.2.1",
-    "typescript": "^4.9.5",
+    "typescript": "^5.3.3",
     "vinyl-buffer": "^1.0.1",
     "webpack": "^5.89.0"
   },
